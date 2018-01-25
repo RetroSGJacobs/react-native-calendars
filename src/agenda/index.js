@@ -310,7 +310,8 @@ export default class AgendaView extends Component {
 
   render() {
     const agendaHeight = Math.max(0, this.viewHeight - HEADER_HEIGHT);
-    const weekDaysNames = dateutils.weekDayNames(this.props.firstDay);
+    let weekDaysNames = dateutils.weekDayNames(this.props.firstDay);
+    weekDaysNames = weekDaysNames.map(wd => wd.toUpperCase());
     const weekdaysStyle = [this.styles.weekdays, {
       opacity: this.state.scrollY.interpolate({
         inputRange: [agendaHeight - HEADER_HEIGHT, agendaHeight],
