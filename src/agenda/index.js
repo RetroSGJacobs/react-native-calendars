@@ -62,7 +62,7 @@ export default class AgendaView extends Component {
     // Max amount of months allowed to scroll to the future. Default = 50
     futureScrollRange: PropTypes.number,
 
-    scrollingEnabled: PropTypes.bool,
+    scrollEnabled: PropTypes.bool,
 
     // initially selected day
     selected: PropTypes.any,
@@ -409,7 +409,7 @@ export default class AgendaView extends Component {
         </Animated.View>
         <Animated.ScrollView
           ref={c => this.scrollPad = c}
-          scrollingEnabled={this.props.scrollingEnabled}
+          scrollEnabled={this.props.scrollEnabled}
           overScrollMode='never'
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
