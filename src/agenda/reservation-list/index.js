@@ -32,6 +32,9 @@ class ReactComp extends Component {
 
     selectedDay: PropTypes.instanceOf(XDate),
     topDay: PropTypes.instanceOf(XDate),
+    refreshControl: PropTypes.element,
+    refreshing: PropTypes.bool,
+    onRefresh: PropTypes.func,
   };
 
   constructor(props) {
@@ -188,6 +191,7 @@ class ReactComp extends Component {
       <FlatList
         ref={(c) => this.list = c}
         style={this.props.style}
+        contentContainerStyle={this.styles.content}
         renderItem={this.renderRow.bind(this)}
         data={this.state.reservations}
         onScroll={this.onScroll.bind(this)}
@@ -195,6 +199,9 @@ class ReactComp extends Component {
         scrollEventThrottle={200}
         onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
         keyExtractor={(item, index) => String(index) + ''}
+        refreshControl={this.props.refreshControl}
+        refreshing={this.props.refreshing || false}
+        onRefresh={this.props.onRefresh}
       />
     );
   }
